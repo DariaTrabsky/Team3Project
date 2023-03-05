@@ -23,12 +23,12 @@ public class LoginPage extends BasePage {
     public WebElement loginBtn;
 
 
-   // public void loginCredentials(String username, String password){
-     //   usernameInputField.sendKeys(username);
-       // passwordInputField.sendKeys(password);
-        //loginBtn.click();
+   public void loginCredentials(String username, String password){
+     usernameInputField.sendKeys(username);
+     passwordInputField.sendKeys(password);
+     loginBtn.click();
 
-   // }
+   }
 
 
     }

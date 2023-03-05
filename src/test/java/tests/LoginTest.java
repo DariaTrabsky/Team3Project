@@ -19,9 +19,7 @@ public class LoginTest extends BaseTest {
         String username = "standard_user";
         String password = "secret_sauce";
 
-        page.usernameInputField.sendKeys(username);
-        page.passwordInputField.sendKeys(password);
-        page.loginBtn.click();
+        page.loginCredentials(username, password);
 
         Assert.assertEquals(driver.getCurrentUrl(),
                 "https://www.saucedemo.com/inventory.html");
@@ -36,9 +34,7 @@ public class LoginTest extends BaseTest {
         String username = "locked_out_user";
         String password = "secret_sauce";
 
-        page.usernameInputField.sendKeys(username);
-        page.passwordInputField.sendKeys(password);
-        page.loginBtn.click();
+        page.loginCredentials(username, password);
 
 
         String expected = "Epic sadface: Sorry, this user has been locked out.";
