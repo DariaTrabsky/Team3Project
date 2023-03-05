@@ -7,10 +7,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="AutomationPracticeTestNG-B7" />
+        <module name="Team3Project" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Team3Project" target="18" />
-    </bytecodeTargetLevel>
   </component>
 </project>
