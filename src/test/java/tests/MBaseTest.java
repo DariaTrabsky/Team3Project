@@ -16,7 +16,7 @@ import utils.ExtentManager;
 import java.lang.reflect.Method;
 import java.util.concurrent.TimeUnit;
 
-public class BaseTest {
+public class MBaseTest {
 
     public WebDriver driver;
     protected static ExtentManager reportManager;
