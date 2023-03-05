@@ -13,6 +13,7 @@ import utils.ConfigReader;
 import utils.ExtentManager;
 
 import java.lang.reflect.Method;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
@@ -71,4 +72,6 @@ public class BaseTest {
                 driver = new InternetExplorerDriver();
         }
     }
+
+
 }
