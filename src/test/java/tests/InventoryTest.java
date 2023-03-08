@@ -1,12 +1,16 @@
 package tests;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.InventoryPage;
 import pages.LoginPage;
 import utils.BrowserUtils;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class InventoryTest extends BaseTest {
     InventoryPage page;
@@ -69,5 +73,51 @@ public class InventoryTest extends BaseTest {
 
         page.addBackpackBtn.click();
         Assert.assertTrue(page.cartBadge.isDisplayed());
+    }
+
+    @Test(testName = "US 304 - I need an option to see navigation menu",
+            description = "When user clicks the button it should display following buttons: All items, About, Logout, eset app state")
+    public void test304(){
+        String user = "standard_user";
+        String pass = "secret_sauce";
+        login.usernameInputField.sendKeys(user);
+        login.passwordInputField.sendKeys(pass);
+        login.loginBtn.click();
+        page.navigationBtn.click();
+
+        page.naviAllItems.isDisplayed();
+        page.naviAbout.isDisplayed();
+        page.naviLogout.isDisplayed();
+        page.naviResetAppState.isDisplayed();
+    }
+    @Test(testName = "US 305: Footer of the page", description =  "Footer of the page should be '© 2022 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy'")
+    public void test305() {
+
+        String user = "standard_user";
+        String pass = "secret_sauce";
+        login.usernameInputField.sendKeys(user);
+        login.passwordInputField.sendKeys(pass);
+        login.loginBtn.click();
+
+        String expected = "© 2023 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy";
+        String actual = page.footerText.getText();
+        Assert.assertEquals(expected, actual);
+    }
+    @Test(testName = "US306: Filter options",
+            description = "When user clicks the filter it should have following options: Name (A to Z), Name (Z to A), Price (low to high),Price (high to low)")
+    public void test306() {
+
+        String user = "standard_user";
+        String pass = "secret_sauce";
+        login.usernameInputField.sendKeys(user);
+        login.passwordInputField.sendKeys(pass);
+        login.loginBtn.click();
+
+        List<String> expectedFilterOptions = Arrays.asList("Name (A to Z)", "Name (Z to A)", "Price (low to high)", "Price (high to low)");
+        List<WebElement> elements = page.filterOption;
+        for (int i = 0; i <= elements.size() - 1; i++) {
+            System.out.println(elements.get(i).getText() + " - " + expectedFilterOptions.get(i));
+            Assert.assertEquals(elements.get(i).getText(), expectedFilterOptions.get(i));
+        }
     }
 }
