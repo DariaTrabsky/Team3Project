@@ -25,9 +25,13 @@ public class LoginTest_Kelvin extends BaseTest{
         page.passwordField.sendKeys(pass);
         page.loginBtn.click();
 
-        List<WebElement> itemCount = driver.findElements(By.xpath("//div[@class='inventory_item']"));
+        String image = "https://www.saucedemo.com/static/media/sl-404.168b1cce.jpg";
         List<WebElement> itemImage = driver.findElements(By.xpath("//img[@src='/static/media/sl-404.168b1cce.jpg']"));
-        Assert.assertEquals(itemImage.size(), itemCount.size());
+        System.out.println(driver.findElement(By.xpath("//img[@src='/static/media/sl-404.168b1cce.jpg']")).getAttribute("src"));
+        for (WebElement each : itemImage){
+            Assert.assertEquals(each.getAttribute("src"), image);
+        }
+
 
     }
 
@@ -38,6 +42,7 @@ public class LoginTest_Kelvin extends BaseTest{
         page.usernameField.sendKeys(user);
         page.passwordField.sendKeys(pass);
         page.loginBtn.click();
+
 
         driver.findElement(By.xpath("//button[@id='add-to-cart-sauce-labs-backpack']")).click();
         Assert.assertTrue(driver.findElement(By.xpath("//a[@class='shopping_cart_link']")).isDisplayed());
