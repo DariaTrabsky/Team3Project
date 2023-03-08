@@ -7,8 +7,8 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class CheckoutPage_Daria extends BasePage {
-    public CheckoutPage_Daria(WebDriver driver){
+public class CheckoutPage extends BasePage {
+    public CheckoutPage(WebDriver driver){
         super(driver);
         PageFactory.initElements(driver,this);
     }

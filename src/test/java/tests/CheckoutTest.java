@@ -1,24 +1,29 @@
 package tests;
 
-import org.openqa.selenium.By;
-
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.CheckoutPage_Daria;
-import pages.InventoryPage_Daria;
+import pages.CartPage;
+import pages.CheckoutPage;
+import pages.InventoryPage;
+import pages.LoginPage;
+
 import java.util.List;
 
-public class CheckoutTest_Daria extends BaseTest {
+public class CheckoutTest extends BaseTest {
 
-    CheckoutPage_Daria page;
-    InventoryPage_Daria InventoryPage;
+    CheckoutPage page;
+    pages.InventoryPage InventoryPage;
+    LoginPage login;
+    CartPage cart;
 
     @BeforeMethod
     public void setUp() {
-        page = new CheckoutPage_Daria(driver);
-        InventoryPage = new InventoryPage_Daria(driver);
+        cart = new CartPage(driver);
+        login = new LoginPage(driver);
+        page = new CheckoutPage(driver);
+        InventoryPage = new InventoryPage(driver);
         driver.get("https://www.saucedemo.com/inventory.html");
 
     }
@@ -27,12 +32,12 @@ public class CheckoutTest_Daria extends BaseTest {
             "First Name, Last Name, Zip")
     public void test001() throws InterruptedException {
 
-        InventoryPage.userNameField.sendKeys("standard_user");
-        InventoryPage.passwordField.sendKeys("secret_sauce");
-        InventoryPage.loginBtn.click();
-        InventoryPage.cartBtn.click();
+        login.usernameInputField.sendKeys("standard_user");
+        login.passwordInputField.sendKeys("secret_sauce");
+        login.loginBtn.click();
+        cart.cartBtn.click();
 
-        driver.findElement(By.id("checkout")).click();
+        cart.checkoutBtn.click();
 
         List<WebElement> checkoutFormFields = page.formFields;
         for (int i = 0; i < checkoutFormFields.size(); i++) {
