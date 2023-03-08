@@ -4,14 +4,14 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.CartPage;
+import pages.CartPage_Kelvin;
 
-public class CartTest extends BaseTest{
-    CartPage page;
+public class CartTest_Kelvin extends BaseTest{
+    CartPage_Kelvin page;
 
     @BeforeMethod
     public void setUp(){
-        page = new CartPage(driver);
+        page = new CartPage_Kelvin(driver);
     }
 
     @Test(testName = "Remove from cart")

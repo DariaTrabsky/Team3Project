@@ -5,8 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class CartPage extends BasePage {
-    public CartPage(WebDriver driver){
+public class CartPage_Kelvin extends BasePage {
+    public CartPage_Kelvin(WebDriver driver){
         super(driver);
         PageFactory.initElements(driver, this);
     }
